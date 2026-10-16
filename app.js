@@ -10,6 +10,9 @@ document.addEventListener('keydown', event => {
     menu.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); menu.focus();
   }
 });
+document.querySelectorAll('.team-member').forEach(card => card.addEventListener('toggle', () => {
+  if (card.open) document.querySelectorAll('.team-member[open]').forEach(other => { if (other !== card) other.open = false; });
+}));
 const form = document.querySelector('#brief-form');
 if (form) form.addEventListener('submit', event => {
   event.preventDefault();

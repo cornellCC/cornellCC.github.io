@@ -8,7 +8,7 @@ Static website for Cornell Consulting Consulting Club. Each section is a separat
 - `about.html`: purpose and working principles
 - `services.html`: practice directory and engagement model
 - `organizational-strategy.html`, `recruitment.html`, `analyst-development.html`, `engagement-operations.html`: individual practices
-- `team.html`: intentionally empty member portrait frames
+- `team.html`: co-president profiles with expandable bios
 - `join.html`: membership information and questions
 - `contact.html`: local inquiry-draft download; nothing is submitted online
 
