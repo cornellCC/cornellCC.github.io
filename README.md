@@ -8,9 +8,9 @@ Static website for Cornell Consulting Consulting Club. Each section is a separat
 - `about.html`: purpose and working principles
 - `services.html`: practice directory and engagement model
 - `organizational-strategy.html`, `recruitment.html`, `analyst-development.html`, `engagement-operations.html`: individual practices
-- `team.html`: co-president profiles with expandable bios
+- `team.html`: executive and extramural leadership profiles with expandable bios
 - `join.html`: membership information and questions
-- `contact.html`: local inquiry-draft download; nothing is submitted online
+- `contact.html`: direct email contact and a form that prepares an email draft
 
 Open `index.html` directly, or serve this directory with a static HTTP server. GitHub Pages can serve the repository root on `main`. Shared styling and behavior live in `styles.css` and `app.js`.
 
