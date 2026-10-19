@@ -10,17 +10,21 @@ document.addEventListener('keydown', event => {
     menu.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); menu.focus();
   }
 });
-document.querySelectorAll('.team-member').forEach(card => card.addEventListener('toggle', () => {
-  if (card.open) document.querySelectorAll('.team-member[open]').forEach(other => { if (other !== card) other.open = false; });
+document.querySelectorAll('[data-profile]').forEach(button => button.addEventListener('click', () => {
+  document.getElementById(button.dataset.profile).showModal();
 }));
+document.querySelectorAll('dialog.profile').forEach(dialog => {
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.querySelector('.profile-close').addEventListener('click', () => dialog.close());
+});
 const form = document.querySelector('#brief-form');
 if (form) form.addEventListener('submit', event => {
   event.preventDefault();
   const data = new FormData(form);
-  const draft = `Cornell Consulting Consulting Club\nInquiry draft — not submitted\n\nName: ${data.get('name')}\nOrganization: ${data.get('club') || 'Not specified'}\nArea of interest: ${data.get('interest')}\n\n${data.get('message')}\n`;
-  const url = URL.createObjectURL(new Blob([draft], {type: 'text/plain;charset=utf-8'}));
-  const link = document.createElement('a'); link.href = url; link.download = 'cccc-inquiry-draft.txt';
-  document.body.append(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector('.form-status').textContent = 'Your draft is ready to download. It has not been submitted.';
+  const interest = data.get('interest');
+  const subject = `CCCC inquiry: ${interest}`;
+  const body = `Hello Cornell Consulting Consulting Club,\n\n${data.get('message')}\n\nName: ${data.get('name')}\nOrganization: ${data.get('club') || 'Not specified'}\nArea of interest: ${interest}`;
+  const mailto = `mailto:cornellconsultingconsulting@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.querySelector('.form-status').textContent = 'Opening a message in your email app…';
+  window.location.href = mailto;
 });
